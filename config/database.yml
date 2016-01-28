@@ -1,0 +1,34 @@
+# MySQL.  Versions 5.0+ are recommended.
+#
+# Install the MYSQL driver
+#   gem install mysql2
+#
+# Ensure the MySQL gem is defined in your Gemfile
+#   gem 'mysql2'
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+#
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: d3rails_development
+
+test:
+  <<: *default
+  database: d3rails_test
+
+production:
+  <<: *default
+  database: <%= ENV['D3RAILS_DB_NAME'] %>
+  username: <%= ENV['D3RAILS_DB_USER'] %>
+  host: <%= ENV['D3RAILS_DB_HOST'] %>
+  password: <%= ENV['D3RAILS_DB_PASS'] %>
+  socket: /var/lib/mysql/mysql.sock

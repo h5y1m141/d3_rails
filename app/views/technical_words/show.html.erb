@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @technical_word.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @technical_word.description %>
+</p>
+
+<%= link_to 'Edit', edit_technical_word_path(@technical_word) %> |
+<%= link_to 'Back', technical_words_path %>

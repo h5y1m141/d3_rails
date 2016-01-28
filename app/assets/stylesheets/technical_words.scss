@@ -1,0 +1,28 @@
+// Place all the styles related to the technical_words controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.technical_word__contents {
+  &__svg {
+    /* padding: 40px; */
+  }
+  &__dendrogram {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+  &__node {
+    font: 10px sans-serif;
+  }
+  &__node circle{
+    fill: #fff;
+    stroke: #4682b4;
+    stroke-width: 1.5px;
+  }
+  &__link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+}
+

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Technical Words</h1>
+
+<div ng-controller='TechnicalWordCtrl'>
+  <div>
+    <input maxlength="20" name="relation_base_word" ng-model="relationBaseWord" placeholder="検索したいトレンドワードを入力してください" size="40" type='text' />
+  </div>
+  <div class="col-sm-12 alert alert-danger" ng-show="relatinSearchFail">
+    {{ relationBaseWord }} は存在しません
+  </div>
+  <div d3-graph relatin_search_fail="relatinSearchFail" relation_base_word="relationBaseWord"></div>
+</div>
+
+<%= link_to 'New Technical word', new_technical_word_path %>
