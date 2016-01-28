@@ -57,7 +57,7 @@ angular.module('D3Rails').directive('d3Graph', ['d3Service', 'TechnicalWord', fu
         } else if(!scope.relationBaseWord){
           return;
         } else {
-          svg.selectAll('*').remove();
+          resetNodesAndLinks();
           scope.render();
         }
       });
@@ -110,6 +110,8 @@ angular.module('D3Rails').directive('d3Graph', ['d3Service', 'TechnicalWord', fu
           link.target = nodes[link.target] || (nodes[link.target] = {id: link.target_id, name: link.target});
           links.push(link);
         });
+        console.log('appendItem prepare done');
+        console.log(links);
         restart();
       }
       function restart(){
@@ -133,6 +135,14 @@ angular.module('D3Rails').directive('d3Graph', ['d3Service', 'TechnicalWord', fu
         link
           .enter().append('line')
           .attr('class', 'technical_word__contents__link');
+      }
+      function resetNodesAndLinks(){
+        links = [];
+        nodes = [];
+        node = node.data([]);
+        node.exit().remove();
+        link = link.data([]);
+        link.exit().remove();        
       }
     }
   };
