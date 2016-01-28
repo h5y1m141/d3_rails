@@ -14,7 +14,6 @@ angular.module('D3Rails').directive('d3Graph', ['d3Service', 'TechnicalWord', fu
 
       var width = 960,
           height = 500,
-          words = [],
           links = [],
           nodes = [];
       var svg = d3.select(element[0])
@@ -142,7 +141,7 @@ angular.module('D3Rails').directive('d3Graph', ['d3Service', 'TechnicalWord', fu
         node = node.data([]);
         node.exit().remove();
         link = link.data([]);
-        link.exit().remove();        
+        link.exit().remove();
       }
     }
   };
