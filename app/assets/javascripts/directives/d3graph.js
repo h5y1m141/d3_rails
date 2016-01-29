@@ -89,20 +89,6 @@ angular.module('D3Rails').directive('d3Graph', ['d3Service', 'TechnicalWord', fu
           .duration(750)
           .attr('r', 8);
       }
-      function mouseclick() {
-        var id,name;
-        id = d3.select(this).select('circle').attr('id');
-        name = d3.select(this).select('text').text();
-        return scope.$parent.prepareRelationWords(id, name);
-      }
-      function mouseDoubleClick(){
-        var data,
-            params = {
-              technical_word_name: d3.select(this).select('text').text()
-            };
-        data = TechnicalWord.relation_words(params);
-        renderNodesAndLinks(data);
-      }
       function appendItem(_links){
         _links.forEach(function(link) {
           link.source = nodes[link.source] || (nodes[link.source] = {id: link.source_id, name: link.source});
@@ -125,8 +111,6 @@ angular.module('D3Rails').directive('d3Graph', ['d3Service', 'TechnicalWord', fu
           .attr('class', 'node')
           .on('mouseover', mouseover)
           .on('mouseout', mouseout)
-          .on('click', mouseclick)
-          .on('dblclick', mouseDoubleClick)
           .call(force.drag);
       }
       function drawLink(links){
